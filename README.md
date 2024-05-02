@@ -12,6 +12,59 @@
  * [Test Bench](#testing)
  * [Code snippets](#snippets)
 
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+
+-- interface
+entity my_entity is
+    generic(
+    );
+    port(
+        in_port : in std_logic;
+        out_port : out std_logic;
+        bidir: inout std_logic_vector(7 downto 0) =: (others => '0')
+    );
+end [entrity] [my_entity];
+
+-- implementation
+architecture rtl of my_entity is
+    -- local/internal signal
+    signal counter: std_logic_vector(10 downto 0) := (others => '0');
+
+-- imports 'my_cmp' (entity) into architecture
+component my_cmp
+    port(
+        a : in std_logic;
+        c : out std_logic
+    );
+end component;
+
+begin
+    
+    -- instantiate component
+    myCmp: my_cmp
+        -- map: component port => signal
+        port map(
+            a => in_port,
+            c => out_port
+        );
+    
+    -- clocked (sync)
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            counter <= counter + 1;
+        end if;
+    end process;
+
+    -- combinatorial (async)
+    out_port <= count;
+
+end [architecture] [rtl];
+```
 
 # Libraries
 
