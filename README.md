@@ -29,8 +29,13 @@ use ieee.std_logic_1164.all;
 ```vhdl
 use ieee.numeric_std.all;
 ```
+### 0. IEEE
+Library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+```
 
-# Entities
+# Entities = IO of a design
 
 ### 1. Declaring an entity:
 Here we declare an entity with Three ports an input port called `FirstPort` an output port called `SecondPort` they are both ``std_logic``.
@@ -60,7 +65,7 @@ end entity;
 ```
 
 
-# Architecture
+# Architecture: (RTL / structural / testbench)
 
 ### 1. Writing an architecture 
 ```vhdl
